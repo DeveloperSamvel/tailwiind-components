@@ -1,29 +1,36 @@
-import { useContext } from 'react';
-import { ColorContext } from '../../context/ColorContext';
+import { v4 as uuidv4 } from 'uuid';
 import getClassName from '../../helpers/getClassName';
+import PasswordIcon from '../Icons/PasswordIcon';
+import LockIcon from '../Icons/LockIcon';
+import ButtonAndIcon from './ButtonAndIcon';
+import Label from './Label';
+import Input from './Input';
+import { borderBlue500, borderBlue600 } from '../../content.js';
 
 import './Input.scss';
+import { useState } from 'react';
 
 const InputMUI = ({
   labelTitle,
-  unlock,
-  setUnlock,
-  focus,
-  setFocus,
+  type,
+  // unlock,
+  // setUnlock,
+  // focus,
+  // setFocus,
   placeholder,
   fullWidth,
-  children
 }) => {
-  const color = useContext(ColorContext);
-  const type = unlock ? "text" : "password";
+  const [unlock, setUnlock] = useState(false);
+  const [focus, setFocus] = useState(false);
+  const randomUuid = uuidv4();
 
-  const showHidePassword = () => setUnlock((prev) => (!prev));
+  const colors = focus ? `dark:${borderBlue500} ${borderBlue600}` : '';
 
   return (
     <div
       className={
         getClassName({
-          defaultClasses: 'flex group',
+          defaultClasses: `_inputContainer group ${colors}`,
           fullWidth
         })
       }
@@ -36,32 +43,27 @@ const InputMUI = ({
           })
         }
       >
-        <input
+        <Input
+          randomUuid={randomUuid}
           type={type}
-          className={
-            getClassName({
-              defaultClasses: '_inputStyle peer',
-              fullWidth
-            })
-          }
+          focus={focus}
+          setFocus={setFocus}
           placeholder={placeholder}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
+          fullWidth={fullWidth}
         />
-        <label className={'_labelStyle'}>
-          <span>
-            {labelTitle}
-          </span>
-        </label>
+        <Label
+          randomUuid={randomUuid}
+          labelTitle={labelTitle}
+        />
       </div>
-      <button
-        className={`_rightIconPosition${focus ? ' _focusContainer' : ''}`}
-        onClick={showHidePassword}
+      <ButtonAndIcon
+        setUnlock={setUnlock}
+        focus={focus}
       >
-        <ColorContext.Provider value={focus ? color : ''}>
-          {children}
-        </ColorContext.Provider>
-      </button>
+        {type === "password" && unlock && <LockIcon />}
+         {/* : <PasswordIcon />} */}
+        {type === "password" && !unlock && <PasswordIcon />}
+      </ButtonAndIcon>
     </div>
   );
 }
