@@ -1,5 +1,5 @@
-import Grid from "../componets/Grid";
-import Button from "../componets/Buttons/Button";
+import Grid from "../components/Grid";
+import Button from "../components/Buttons/Button";
 
 const AnkapGrid = () => {
   return (
