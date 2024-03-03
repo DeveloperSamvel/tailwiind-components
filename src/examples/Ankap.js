@@ -1,4 +1,4 @@
-import Button from "../componets/Button";
+import Button from "../components/Button";
 
 const Ankap = () => {
   return (

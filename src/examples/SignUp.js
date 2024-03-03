@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import PasswordIcon from '../componets/Icons/PasswordIcon';
-import LockIcon from '../componets/Icons/LockIcon';
-import InputMUI from '../componets/Inputs/InputMUI';
-import Button from '../componets/Buttons/Button';
-import Grid from '../componets/Grid';
+import PasswordIcon from '../components/Icons/PasswordIcon';
+import LockIcon from '../components/Icons/LockIcon';
+import InputMUI from '../components/Inputs/InputMUI';
+import Button from '../components/Buttons/Button';
+import Grid from '../components/Grid';
 
 const SignUp = () => {
   const [unlock, setUnlock] = useState(false);
