@@ -5,7 +5,7 @@ import LockIcon from '../Icons/LockIcon';
 import ButtonAndIcon from './ButtonAndIcon';
 import Label from './Label';
 import Input from './Input';
-import { borderBlue500, borderBlue600 } from '../../content.js';
+import { blue500, blue600 } from '../../content.js';
 
 import './Input.scss';
 import { useState } from 'react';
@@ -24,7 +24,7 @@ const InputMUI = ({
   const [focus, setFocus] = useState(false);
   const randomUuid = uuidv4();
 
-  const colors = focus ? `dark:${borderBlue500} ${borderBlue600}` : '';
+  const colors = focus ? `dark:border-${blue500} border-${blue600}` : '';
 
   return (
     <div
@@ -56,14 +56,15 @@ const InputMUI = ({
           labelTitle={labelTitle}
         />
       </div>
-      <ButtonAndIcon
+      {type === "password" && <ButtonAndIcon
+        colors={colors}
         setUnlock={setUnlock}
         focus={focus}
       >
-        {type === "password" && unlock && <LockIcon />}
+        {unlock && <LockIcon />}
          {/* : <PasswordIcon />} */}
-        {type === "password" && !unlock && <PasswordIcon />}
-      </ButtonAndIcon>
+        {!unlock && <PasswordIcon />}
+      </ButtonAndIcon>}
     </div>
   );
 }

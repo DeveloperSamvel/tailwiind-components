@@ -1,2 +1,2 @@
-export const borderBlue500 = 'border-blue-500'; 
-export const borderBlue600 = 'border-blue-600';
+export const blue500 = 'blue-500'; 
+export const blue600 = 'blue-600';

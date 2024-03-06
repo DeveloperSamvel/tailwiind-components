@@ -1,18 +1,13 @@
-import { useContext } from 'react';
 import getClassName from '../../helpers/getClassName';
-import { ColorContext } from '../../context/ColorContext';
 
 import './Icons.scss';
 
 const EmailIcon = () => {
-  const colorClass = useContext(ColorContext);
-
   return (
     <svg
       className={
         getClassName({
-          defaultClasses: '_iconStyle',
-          className: colorClass
+          defaultClasses: '_iconStyle'
         })
       }
       aria-hidden="true"

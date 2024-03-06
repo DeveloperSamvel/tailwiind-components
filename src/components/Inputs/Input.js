@@ -1,4 +1,3 @@
-import { borderBlue500, borderBlue600 } from '../../content.js';
 import getClassName from '../../helpers/getClassName';
 
 import './Input.scss';

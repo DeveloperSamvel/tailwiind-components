@@ -1,13 +1,9 @@
-import { useContext } from 'react';
-import { ColorContext } from '../../context/ColorContext';
 import './Icons.scss';
 
 const PasswordIcon = () => {
-  const colorClass = useContext(ColorContext);
-
   return (
     <svg
-      className={`_iconStyle ${colorClass}`}
+      className={`_iconStyle`}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"

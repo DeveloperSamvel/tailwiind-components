@@ -1,24 +1,18 @@
-import { useContext } from 'react';
-import { ColorContext } from '../../context/ColorContext';
-
 import './Input.scss';
 
 const ButtonAndIcon = ({
   setUnlock,
-  focus,
   children
 }) => {
-  const color = useContext(ColorContext);
   const showHidePassword = () => setUnlock((prev) => (!prev));
+  const spaces = `px-3 py-3`;
 
   return (
     <button
-      className={`_rightIconPosition`}
+      className={`_rightIconPosition ${spaces}`}
       onClick={showHidePassword}
     >
-      <ColorContext.Provider value={focus ? color : ''}>
-        {children}
-      </ColorContext.Provider>
+      {children}
     </button>
   );
 }

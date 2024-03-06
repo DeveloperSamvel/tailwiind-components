@@ -1,3 +1,3 @@
 import { createContext } from 'react';
 
-export const ColorContext = createContext("_focus");
+export const ColorContext = createContext(null);
