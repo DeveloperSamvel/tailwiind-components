@@ -40,7 +40,7 @@ const InputMUI = ({
       >
         <Input
           randomUuid={randomUuid}
-          type={type}
+          type={unlock ? 'text' : type}
           focus={focus}
           setFocus={setFocus}
           placeholder={placeholder}
