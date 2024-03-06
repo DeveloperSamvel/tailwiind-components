@@ -1,3 +1,4 @@
+import { useContext, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import getClassName from '../../helpers/getClassName';
 import PasswordIcon from '../Icons/PasswordIcon';
@@ -5,26 +6,22 @@ import LockIcon from '../Icons/LockIcon';
 import ButtonAndIcon from './ButtonAndIcon';
 import Label from './Label';
 import Input from './Input';
-import { blue500, blue600 } from '../../content.js';
+import { ColorsContext } from '../../context/ColorContext.js';
 
 import './Input.scss';
-import { useState } from 'react';
 
 const InputMUI = ({
   labelTitle,
   type,
-  // unlock,
-  // setUnlock,
-  // focus,
-  // setFocus,
   placeholder,
   fullWidth,
 }) => {
   const [unlock, setUnlock] = useState(false);
   const [focus, setFocus] = useState(false);
+  const { color500, color600 } = useContext(ColorsContext);
   const randomUuid = uuidv4();
 
-  const colors = focus ? `dark:border-${blue500} border-${blue600}` : '';
+  const colors = focus ? `dark:border-${color500} border-${color600}` : '';
 
   return (
     <div
@@ -56,15 +53,12 @@ const InputMUI = ({
           labelTitle={labelTitle}
         />
       </div>
-      {type === "password" && <ButtonAndIcon
-        colors={colors}
-        setUnlock={setUnlock}
-        focus={focus}
-      >
-        {unlock && <LockIcon />}
-         {/* : <PasswordIcon />} */}
-        {!unlock && <PasswordIcon />}
-      </ButtonAndIcon>}
+      {type === "password" && (
+        <ButtonAndIcon setUnlock={setUnlock}>
+          {unlock && <LockIcon focus={focus} />}
+          {!unlock && <PasswordIcon focus={focus} />}
+        </ButtonAndIcon>
+      )}
     </div>
   );
 }
