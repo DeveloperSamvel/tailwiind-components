@@ -1,17 +1,17 @@
 import { useContext } from 'react';
 import getClassName from '../../helpers/getClassName';
-import { ColorsContext } from '../../context/ColorContext';
+import { blueColorContext } from '../../context/BlueColorContext';
 
 import './Icons.scss';
 
 const LockIcon = ({ focus }) => {
-  const { color500 } = useContext(ColorsContext);
+  const { fill500 } = useContext(blueColorContext);
 
   return (
     <svg
       className={
         getClassName({
-          defaultClasses: `_iconStyle hover:fill-blue-500 ${focus ? ` fill-${color500}` : ''}`,
+          defaultClasses: `_iconStyle${focus ? ` ${fill500}` : ''}`,
         })
       }
       aria-hidden="true"

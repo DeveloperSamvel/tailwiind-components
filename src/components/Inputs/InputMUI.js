@@ -6,7 +6,7 @@ import LockIcon from '../Icons/LockIcon';
 import ButtonAndIcon from './ButtonAndIcon';
 import Label from './Label';
 import Input from './Input';
-import { ColorsContext } from '../../context/ColorContext.js';
+import { blueColorContext } from '../../context/BlueColorContext.js';
 
 import './Input.scss';
 
@@ -18,16 +18,14 @@ const InputMUI = ({
 }) => {
   const [unlock, setUnlock] = useState(false);
   const [focus, setFocus] = useState(false);
-  const { color500, color600 } = useContext(ColorsContext);
+  const { border500, border600 } = useContext(blueColorContext);
   const randomUuid = uuidv4();
-
-  const colors = focus ? `dark:border-${color500} border-${color600}` : '';
 
   return (
     <div
       className={
         getClassName({
-          defaultClasses: `_inputContainer group ${colors}`,
+          defaultClasses: `_inputContainer group ${focus ? ` ${border500} ${border600}` : 'grayBorder'}`,
           fullWidth
         })
       }
